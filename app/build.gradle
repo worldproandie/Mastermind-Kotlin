@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.andieheung.mastermind_kotlin_mvvm"
+        minSdkVersion 26
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/androidx.versionedparcelable_versionedparcelable.version'
+        exclude 'META-INF/androidx.core_core.version'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+
+    implementation "javax.xml.bind:jaxb-api:2.2.11"
+    implementation "com.sun.xml.bind:jaxb-core:2.2.11"
+    implementation "com.sun.xml.bind:jaxb-impl:2.2.11"
+    implementation "javax.activation:activation:1.1.1"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+
+    def archLifecycleVersion = "2.0.0-rc01"
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
+
+    def roomVersion = "2.1.0-alpha06"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+
+    def gradle_version = "5.1.1"
+    kapt "com.android.databinding:compiler:$gradle_version"
+}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View" />
+        <variable
+                name="gameAttempt"
+                type="com.andieheung.mastermind_kotlin_mvvm.data.game_attempt.GameAttempt"/>
+    </data>
+<LinearLayout
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/MM_gameBoardlayout">
+
+    <LinearLayout
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="33sp"
+                  android:background="@drawable/border_blue"
+                  android:weightSum="10"
+                  style="@style/MM_gameBorder">
+        <TextView
+                android:id="@+id/item_id_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="30sp"
+                android:layout_weight="2"
+                android:text="@{`#` + Long.toString(gameAttempt.id)}"
+                style="@style/MM_gameRecordTxt1"/>
+        <TextView
+                android:id="@+id/item_player_id"
+                android:layout_width="wrap_content"
+                android:layout_height="33sp"
+                android:text="@{gameAttempt.player_id}"
+                android:paddingStart="3dp"
+                android:paddingEnd="3dp"
+                android:layout_weight="8"
+                style="@style/MM_gameRecordTxt"/>
+    </LinearLayout>
+
+    <LinearLayout
+                  android:id="@+id/item_record"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="100sp"
+                  android:background="@drawable/border_yl"
+                  style="@style/MM_gameBorder">
+        <LinearLayout
+                      android:id="@+id/item_result"
+                      android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="30sp"
+                      android:weightSum="3"
+                      style="@style/MM_gameBorder">
+            <TextView
+                    android:id="@+id/item_num_attempt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    android:text="@{Integer.toString(gameAttempt.num_attempted) + ` Attempts`}"
+                    style="@style/MM_gameRecordTxt1"/>
+            <TextView
+                android:id="@+id/item_time_spent"
+                android:layout_width="wrap_content"
+                android:layout_height="30sp"
+                android:layout_weight="1"
+                app:time_spent="@{gameAttempt.time_spent}"
+                style="@style/MM_gameRecordTxt1"/>
+            <TextView
+                    android:id="@+id/item_result_flag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    app:result_flag="@{gameAttempt.result_flag}"
+                    style="@style/MM_gameRecordTxt1"/>
+        </LinearLayout>
+
+        <LinearLayout
+                      android:id="@+id/item_pin_color_time"
+                      android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="30sp"
+                      android:weightSum="2"
+                      style="@style/MM_gameBorder">
+            <TextView
+                    android:id="@+id/item_num_pin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    android:text="@{Integer.toString(gameAttempt.num_pin) + ` Pins`}"
+                    style="@style/MM_gameRecordTxt1"/>
+            <TextView
+                    android:id="@+id/item_num_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:layout_weight="1"
+                    android:text="@{Integer.toString(gameAttempt.num_color) + ` Colors`}"
+                    style="@style/MM_gameRecordTxt1"/>
+
+        </LinearLayout>
+        <LinearLayout
+                      android:id="@+id/item_id"
+                      android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="30sp"
+                      style="@style/MM_gameBorder">
+            <TextView
+                    android:id="@+id/item_timestamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30sp"
+                    android:text="@{gameAttempt.timestamp.toString()}"
+                    style="@style/MM_gameRecordTxt1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+</layout>

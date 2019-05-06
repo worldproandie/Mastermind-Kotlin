@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+                name="viewModel"
+                type="com.andieheung.mastermind_kotlin_mvvm.record.RecordViewModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/MM_gameBoardlayout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              tools:context="com.andieheung.mastermind_kotlin_mvvm.record.RecordActivity">
+
+
+    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="8"
+                android:background="@drawable/border_yl">
+
+        </LinearLayout>
+
+
+        <ListView
+                app:items="@{viewModel.items}"
+                android:id="@+id/game_record_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/top_bar"
+                android:transcriptMode="alwaysScroll"
+                android:stackFromBottom="true"/>
+    </RelativeLayout>
+</LinearLayout>
+</layout>
