@@ -19,7 +19,7 @@ class RecordViewModel (
 
     fun getAll() {
 
-        gameAttemptsRepository.getAll(object : GameAttemptsDataSource.LoadGameAttemptsCallback {
+        gameAttemptsRepository.getAll(object : GameAttemptsDataSource.LoadEntriesCallback {
 
             override fun onEntriesLoaded(gameAttempts: List<GameAttempt>) {
                 _items.value = gameAttempts

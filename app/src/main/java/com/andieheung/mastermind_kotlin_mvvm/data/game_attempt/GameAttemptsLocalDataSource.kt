@@ -7,7 +7,7 @@ class GameAttemptsLocalDataSource private constructor(
     val gameAttemptsDao: GameAttemptsDao
 ) : GameAttemptsDataSource {
 
-    override fun getAll(callback: GameAttemptsDataSource.LoadGameAttemptsCallback){
+    override fun getAll(callback: GameAttemptsDataSource.LoadEntriesCallback){
         appExecutors.diskIO.execute {
             val gameAttempts = gameAttemptsDao.getAll()
             appExecutors.mainThread.execute {
@@ -20,7 +20,7 @@ class GameAttemptsLocalDataSource private constructor(
         }
     }
 
-    override fun getEntry(id: String, callback: GameAttemptsDataSource.GetGameAttemptCallback){
+    override fun getEntry(id: String, callback: GameAttemptsDataSource.GetEntryCallback){
         appExecutors.diskIO.execute {
             val gameAttempt = gameAttemptsDao.findById(id)
             appExecutors.mainThread.execute {

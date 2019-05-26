@@ -2,23 +2,23 @@ package com.andieheung.mastermind_kotlin_mvvm.data.game_attempt
 
 interface GameAttemptsDataSource {
 
-    interface LoadGameAttemptsCallback {
+    interface LoadEntriesCallback {
 
         fun onEntriesLoaded(gameAttempts: List<GameAttempt>)
 
         fun onDataNotAvailable()
     }
 
-    interface GetGameAttemptCallback {
+    interface GetEntryCallback {
 
         fun onEntryLoaded(gameAttempt: GameAttempt)
 
         fun onDataNotAvailable()
     }
 
-    fun getAll(callback: LoadGameAttemptsCallback)
+    fun getAll(callback: LoadEntriesCallback)
 
-    fun getEntry(id: String, callback: GetGameAttemptCallback)
+    fun getEntry(id: String, callback: GetEntryCallback)
 
     fun saveEntry(gameAttempt: GameAttempt)
 
